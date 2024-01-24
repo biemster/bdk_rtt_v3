@@ -27,12 +27,12 @@ import os
 
 def mk_rtconfig(filename):
     try:
-        config = file(filename)
+        config = open(filename)
     except:
         print('open config:%s failed' % filename)
         return
 
-    rtconfig = file('rtconfig.h', 'w')
+    rtconfig = open('rtconfig.h', 'w')
     rtconfig.write('#ifndef RT_CONFIG_H__\n')
     rtconfig.write('#define RT_CONFIG_H__\n\n')
 
@@ -106,13 +106,13 @@ def touch_env():
 
         os.system('git clone https://github.com/RT-Thread/packages.git ~/.env/packages/packages')
 
-        kconfig = file(os.path.join(env_dir, 'packages', 'Kconfig'), 'w')
+        kconfig = open(os.path.join(env_dir, 'packages', 'Kconfig'), 'w')
         kconfig.write('source "$PKGS_DIR/packages/Kconfig"')
 
         os.mkdir(os.path.join(env_dir, 'tools'))
         os.system('git clone https://github.com/RT-Thread/env.git ~/.env/tools/scripts')
 
-        env_sh = file(os.path.join(env_dir, 'env.sh'), 'w')
+        env_sh = open(os.path.join(env_dir, 'env.sh'), 'w')
         env_sh.write('export PATH=~/.env/tools/scripts:$PATH')
 
 # menuconfig for Linux

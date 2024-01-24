@@ -152,7 +152,7 @@ def VS2012Project(target, script, program):
     root = tree.getroot()
     elem = root
     
-    out = file(target, 'wb')
+    out = open(target, 'wb')
     out.write('<?xml version="1.0" encoding="UTF-8"?>\r\n')
     
     ProjectFiles = []
@@ -168,7 +168,7 @@ def VS2012Project(target, script, program):
     VS_add_HeadFiles(program, elem, project_path)
 
     # write head include path
-    if building.Env.has_key('CPPPATH'):
+    if building.Env.get('CPPPATH'):
         cpp_path = building.Env['CPPPATH']
         paths = set()
         for path in cpp_path:
@@ -185,7 +185,7 @@ def VS2012Project(target, script, program):
             break
 
     # write cppdefinitons flags
-    if building.Env.has_key('CPPDEFINES'):
+    if building.Env.get('CPPDEFINES'):
         for elem in tree.iter(tag='PreprocessorDefinitions'):
             definitions = ';'.join(building.Env['CPPDEFINES']) + ';%(PreprocessorDefinitions)'
             elem.text = definitions
@@ -193,7 +193,7 @@ def VS2012Project(target, script, program):
     # write link flags
 
     # write lib dependence (Link)
-    if building.Env.has_key('LIBS'):
+    if building.Env.get('LIBS'):
         for elem in tree.iter(tag='AdditionalDependencies'):
             libs_with_extention = [i+'.lib' for i in building.Env['LIBS']]
             libs = ';'.join(libs_with_extention) + ';%(AdditionalDependencies)'
@@ -201,7 +201,7 @@ def VS2012Project(target, script, program):
             break
 
     # write lib include path
-    if building.Env.has_key('LIBPATH'):
+    if building.Env.get('LIBPATH'):
         lib_path = building.Env['LIBPATH']
         paths  = set()
         for path in lib_path:
@@ -224,7 +224,7 @@ def VS2012Project(target, script, program):
 
     xml_indent(filter_project)
     filter_string = etree.tostring(filter_project, encoding='utf-8')
-    out = file('project.vcxproj.filters', 'wb')
+    out = open('project.vcxproj.filters', 'wb')
     out.write('<?xml version="1.0" encoding="UTF-8"?>\r\n')
     root_node=r'<Project ToolsVersion="4.0">'
     out.write(r'<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">')

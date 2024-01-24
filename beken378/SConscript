@@ -70,7 +70,7 @@ src += ["app/http/lite-log.c"]
 if (GetLocalDepend(options, 'CFG_PCM_RESAMPLER') == 1):
 	src += ["func/pcm_resampler/pcm_resampler_port.c"]
 
-if (0 == string.find(GetLocalDepend(options, 'CFG_SOC_NAME'), 'SOC_BK7271')):
+if 'SOC_BK7271' in GetLocalDepend(options, 'CFG_SOC_NAME'):
 	src += ["driver/i2c/i2c1_bk7271.c"]
 	src += ["driver/mailbox/mailbox.c"]
 	src += ["driver/gpio/gpio_bk7271.c"]
@@ -268,7 +268,7 @@ path += [cwd + '/func/sensor']
 if (GetLocalDepend(options, 'CFG_WPA3') == 1):
     path += [cwd + '/func/wolfssl']
 
-if (0 == string.find(GetLocalDepend(options, 'CFG_SOC_NAME'), 'SOC_BK7231N')):
+if 'SOC_BK7231N' in GetLocalDepend(options, 'CFG_SOC_NAME'):
     src += ["driver/calendar/calendar.c"]
     path += [cwd + '/driver/calendar']
 

@@ -50,13 +50,13 @@ def GetNewLibVersion(rtconfig):
     root = GetGCCRoot(rtconfig)
 
     if CheckHeader(rtconfig, '_newlib_version.h'): # get version from _newlib_version.h file
-        f = file(os.path.join(root, 'include', '_newlib_version.h'))
+        f = open(os.path.join(root, 'include', '_newlib_version.h'))
         if f:
             for line in f:
                 if line.find('_NEWLIB_VERSION') != -1 and line.find('"') != -1:
                     version = re.search(r'\"([^"]+)\"', line).groups()[0]
     elif CheckHeader(rtconfig, 'newlib.h'): # get version from newlib.h
-        f = file(os.path.join(root, 'include', 'newlib.h'))
+        f = open(os.path.join(root, 'include', 'newlib.h'))
         if f:
             for line in f:
                 if line.find('_NEWLIB_VERSION') != -1 and line.find('"') != -1:
@@ -77,7 +77,7 @@ def GCCResult(rtconfig, str):
     gcc_cmd = os.path.join(rtconfig.EXEC_PATH, rtconfig.CC)
 
     # use temp file to get more information 
-    f = file('__tmp.c', 'w')
+    f = open('__tmp.c', 'w')
     if f:
         f.write(str)
         f.close()
@@ -103,7 +103,7 @@ def GCCResult(rtconfig, str):
         stdc = '1989'
         posix_thread = 0
 
-        for line in stdout.split('\n'):
+        for line in stdout.decode().split('\n'):
             if re.search('fd_set', line):
                 have_fdset = 1
 
@@ -187,7 +187,7 @@ def GenerateGCCConfig(rtconfig):
     cc_header += GCCResult(rtconfig, str)
     cc_header += '\n#endif\n'
 
-    cc_file = file('cconfig.h', 'w')
+    cc_file = open('cconfig.h', 'w')
     if cc_file:
         cc_file.write(cc_header)
         cc_file.close()

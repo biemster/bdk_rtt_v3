@@ -10,16 +10,16 @@ if os.getenv('RTT_ROOT'):
 else:
     RTT_ROOT = os.path.join(os.path.normpath(os.getcwd()), 'rt-thread')
 
-print 'RTT_ROOT is: %s' %(RTT_ROOT)
+print('RTT_ROOT is: %s' %(RTT_ROOT))
 
 if os.getenv('RTT_CC'):
     CROSS_TOOL = os.getenv('RTT_CC')
 
 if  CROSS_TOOL == 'gcc':
     PLATFORM    = 'gcc'
-    EXEC_PATH   = r'/home/gcc-arm-none-eabi-5_4-2016q3/bin'
+    EXEC_PATH   = r'/home/lars/temp/bk7252/gcc-arm-none-eabi-5_4-2016q3/bin'
 else:
-    print 'Please make sure your toolchains is GNU GCC!'
+    print('Please make sure your toolchains is GNU GCC!')
     exit(0)
 
 if os.getenv('RTT_EXEC_PATH'):

@@ -69,7 +69,7 @@ def IARAddGroup(parent, name, files, project_path):
 def IARWorkspace(target):
     # make an workspace 
     workspace = target.replace('.ewp', '.eww')
-    out = file(workspace, 'wb')
+    out = open(workspace, 'wb')
     xml = iar_workspace % target
     out.write(xml)
     out.close()
@@ -80,7 +80,7 @@ def IARProject(target, script):
     tree = etree.parse('template.ewp')
     root = tree.getroot()
 
-    out = file(target, 'wb')
+    out = open(target, 'wb')
 
     CPPPATH = []
     CPPDEFINES = []
@@ -93,18 +93,18 @@ def IARProject(target, script):
         IARAddGroup(root, group['name'], group['src'], project_path)
 
         # get each include path
-        if group.has_key('CPPPATH') and group['CPPPATH']:
+        if group.get('CPPPATH') and group['CPPPATH']:
             CPPPATH += group['CPPPATH']
         
         # get each group's definitions
-        if group.has_key('CPPDEFINES') and group['CPPDEFINES']:
+        if group.get('CPPDEFINES') and group['CPPDEFINES']:
             CPPDEFINES += group['CPPDEFINES']
         
         # get each group's link flags
-        if group.has_key('LINKFLAGS') and group['LINKFLAGS']:
+        if group.get('LINKFLAGS') and group['LINKFLAGS']:
             LINKFLAGS += group['LINKFLAGS']
             
-        if group.has_key('LIBS') and group['LIBS']:
+        if group.get('LIBS') and group['LIBS']:
             for item in group['LIBS']:
                 lib_path = ''
 

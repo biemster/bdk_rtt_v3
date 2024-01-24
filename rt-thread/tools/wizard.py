@@ -72,13 +72,13 @@ def usage():
 def gen_component(name):
     print 'generate SConscript for ' + name
     text = SConscript_com.replace('COMPONENT_NAME', name)
-    f = file('SConscript', 'w')
+    f = open('SConscript', 'w')
     f.write(text)
     f.close()
 
 def gen_bridge():
     print 'generate SConscript for bridge'
-    f = file('SConscript', 'w')
+    f = open('SConscript', 'w')
     f.write(SConscript_bridge)
     f.close()
 

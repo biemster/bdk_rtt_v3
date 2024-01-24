@@ -180,14 +180,14 @@ def ProjectInfo(env):
 
     for group in project:
         # get each files
-        if group.has_key('src') and group['src']:
+        if group.get('src') and group['src']:
             FILES += group['src']
 
         # get each include path
-        if group.has_key('CPPPATH') and group['CPPPATH']:
+        if group.get('CPPPATH') and group['CPPPATH']:
             CPPPATH += group['CPPPATH']
 
-    if env.has_key('CPPDEFINES'):
+    if env.get('CPPDEFINES'):
         CPPDEFINES = env['CPPDEFINES']
         CPPDEFINES = ListMap(CPPDEFINES)
 
