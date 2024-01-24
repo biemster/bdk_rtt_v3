@@ -42,7 +42,7 @@
 #define RT_USING_DEVICE_OPS 1
 #define RT_USING_CONSOLE 1
 #define RT_CONSOLEBUF_SIZE 128
-#define RT_CONSOLE_DEVICE_NAME "uart2"
+#define RT_CONSOLE_DEVICE_NAME "uart1"
 
 /* RT-Thread Components */
 
@@ -200,11 +200,11 @@
 /* Wiced WiFi */
 
 #define PKG_USING_NETUTILS 1
-#define PKG_NETUTILS_PING
+#define PKG_NETUTILS_PING 1
 #define PKG_NETUTILS_NETIO
 #define PKG_NETUTILS_NTP 1
 #define NETUTILS_NTP_TIMEZONE 8
-#define NETUTILS_NTP_HOSTNAME "cn.ntp.org.cn"
+#define NETUTILS_NTP_HOSTNAME "0.openwrt.pool.ntp.org"
 #define PKG_USING_NETUTILS_LATEST_VERSION
 
 /* IoT Cloud */
