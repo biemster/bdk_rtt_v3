@@ -1,0 +1,9 @@
+bell button: P5/45
+reset button: VCCPLL/68
+red LED: VUSB/12
+blue LED: P4/47
+IR leds: P6/49
+light sensor: VDDRAM/42, P3/46
+mic: MICLN/58, MICLP/59, MICBIAS/60
+speaker (ANT8110): AUDLP/N (55/56), !SD = P7/50
+RF433 (CMT2150L): CSB:NC, CLK:NC, DATA:to bell button
