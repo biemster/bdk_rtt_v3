@@ -26,7 +26,7 @@ download the BDK RTT directly on [Download Center](http://bbs.bekencorp.com:8191
 
 Here's a quick summary of resources to help you find your way around:
 
- - [Get Started](http://docs.bekencorp.com:8191/v3.0/get-started/index.html#get-started) - Get BDK Started Guides
+ - [Get Started](https://docs.bekencorp.com/backup/v3.0/get-started/index.html) - Get BDK Started Guides
  - [API reference](http://docs.bekencorp.com:8191/v3.0/api-reference/index.html) - Get BDK API reference
  - [Hardware Docs](http://bbs.bekencorp.com:8191/forum.php?mod=forumdisplay&fid=57) - Download all kinds of hardware documents
  - [Download Center](http://bbs.bekencorp.com:8191/forum.php?mod=forumdisplay&fid=57) - Download BDK ARM toolchains, BIN download tools and other resources
