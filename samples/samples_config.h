@@ -1,6 +1,6 @@
 
 /*key button test*/
-//#define BUTTON_TEST 
+#define BUTTON_TEST
 
 /*voice config*/
 //#define VOICE_CONFIG_TEST

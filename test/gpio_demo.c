@@ -47,7 +47,42 @@ static void pin_led_sample(void) {
 	/* 默认低电平*/
 	rt_pin_write(LED1_PIN_NUM, PIN_HIGH);
 }
+
+static void set_pin(int argc,char *argv[]) {
+	if(argc != 3) {
+		rt_kprintf("usage: set_pin <pin> <0,1>\r\n");
+		return;
+	}
+
+	int gpio = atoi(argv[1]);
+	int value = atoi(argv[2]);
+	if(gpio >= 40) {
+		rt_kprintf("pin %d too high\r\n", gpio);
+		return;
+	}
+
+	rt_pin_mode(gpio, PIN_MODE_OUTPUT);
+	rt_pin_write(gpio, value ? PIN_HIGH : PIN_LOW);
+}
+static void get_pin(int argc,char *argv[]) {
+	if(argc != 2) {
+		rt_kprintf("usage: get_pin <pin>\r\n");
+		return;
+	}
+
+	int gpio = atoi(argv[1]);
+	if(gpio >= 40) {
+		rt_kprintf("pin %d too high\r\n", gpio);
+		return;
+	}
+
+	rt_pin_mode(gpio, PIN_MODE_INPUT_PULLUP);
+	int value = rt_pin_read(gpio);
+	rt_kprintf("pin %d value: %d\r\n", gpio, value);
+}
+
 /* 导出到msh 命令列表中*/
 MSH_CMD_EXPORT(pin_led_sample , pin led sample);
+MSH_CMD_EXPORT(set_pin , set pin high or low);
+MSH_CMD_EXPORT(get_pin , get pin value);
 #endif
-

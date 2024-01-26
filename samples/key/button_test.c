@@ -1,9 +1,9 @@
 #include "include.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "typedef.h"
 #include "arm_arch.h"
-#include "gpio_pub.h"
 #include "gpio_pub.h"
 #include "uart_pub.h"
 #include "multi_button.h"
@@ -13,8 +13,6 @@
 #include "samples_config.h"
 
 #ifdef  BUTTON_TEST
-
-#define TEST_BUTTON 4
 
 static beken_timer_t g_key_timer;
 
@@ -56,8 +54,7 @@ void button_test(int argc,char *argv[])
 		
 		rt_kprintf("---gpio%d as button : test start---\r\n",gpio);
 			
-		if((gpio >=40)||(gpio >= 40))
-		{
+		if(gpio >= 40) {
 			rt_kprintf("---! ! !gpio error---\r\n");
 			return;
 		}

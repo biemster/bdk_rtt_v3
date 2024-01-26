@@ -77,3 +77,4 @@
 #define PSRAM_TEST
 #endif
 #define PM_TEST
+#define GPIO_DEMO

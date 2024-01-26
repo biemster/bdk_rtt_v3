@@ -108,7 +108,7 @@
 #define WIFI_DEVICE_AP_NAME "ap"
 #define RT_USING_AUDIO 1
 #define RT_USING_SPI 1
-#define RT_USING_I2S 1
+//#define RT_USING_I2S 1
 
 /* Using USB */
 
