@@ -81,3 +81,4 @@
 #define WEB_CAMERA_TEST
 #define I2C_SCAN
 #define WLAN_RAW
+#define MICPHONE_TEST

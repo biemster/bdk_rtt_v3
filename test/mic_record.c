@@ -5,12 +5,14 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "mem_pub.h"
 #include "board.h"
 #include "audio_device.h"
 #include "vad.h"
 #include "test_config.h"
+
 #ifdef MICPHONE_TEST
-static uint8_t *test_buf;
+
 #define TEST_BUFF_LEN 80*1024
 #define READ_SIZE 2048
 
@@ -31,7 +33,7 @@ static uint8_t *test_buf;
 void record_and_play(int argc,char *argv[])
 {
 	int mic_read_len = 0;
-	int actual_len,i;
+	int actual_len;
 	int dac_wr_len=0;
 	uint16_t *buffer = NULL;
 	uint16_t read_size;
@@ -48,7 +50,7 @@ void record_and_play(int argc,char *argv[])
 	work_mode = atoi(argv[2]);
 	sample_rate = atoi(argv[3]);
 
-	test_buf = sdram_malloc(TEST_BUFF_LEN);
+	uint8_t *test_buf = os_malloc(TEST_BUFF_LEN);
 	if(test_buf == NULL)
 	{
 		rt_kprintf("===not enough memory===\r\n");
@@ -158,7 +160,7 @@ void record_and_play(int argc,char *argv[])
 	audio_device_close();
 
 	if(test_buf)
-		sdram_free(test_buf);
+		os_free(test_buf);
 }
 MSH_CMD_EXPORT(record_and_play, record play);
 
