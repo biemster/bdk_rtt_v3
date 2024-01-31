@@ -8,6 +8,15 @@
 #include "release.h"
 #include "arch.h"
 
+// REALLY DIRTY HACK! don't do it like this!
+/* bk7252 has a camera interface */
+#undef CFG_USE_CAMERA_INTF
+#define CFG_USE_CAMERA_INTF 1
+#undef CFG_USE_APP_DEMO_VIDEO_TRANSFER
+#define CFG_USE_APP_DEMO_VIDEO_TRANSFER 1
+#undef APP_DEMO_CFG_USE_VIDEO_BUFFER
+#define APP_DEMO_CFG_USE_VIDEO_BUFFER 1
+
 #if CFG_ENABLE_DEMO_TEST
 #include "demos_config.h"
 #endif

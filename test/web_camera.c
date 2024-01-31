@@ -91,7 +91,6 @@ void mjpeg_server_thread(void *arg)
     struct sockaddr_in addr;
     socklen_t sock_len = sizeof(struct sockaddr_in);
 
-    int bufsz = 50 * 1024;
     uint8_t *buf = (uint8_t *) malloc (MAX_BUF_SIZE);
 
     if (!buf)
@@ -178,8 +177,6 @@ exit:
 
 int web_jpeg_stream(int argc, char** argv)
 {
-    int frame_len;
-    unsigned char *jpg_buf = NULL;
     if (argc != 2)
     {
         rt_kprintf("%s start|stop\n", argv[0]);

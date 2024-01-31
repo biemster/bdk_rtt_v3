@@ -89,11 +89,11 @@
 #define RT_USING_DFS_ROMFS 1
 
 /* Device Drivers */
-//#define BEKEN_USING_IIC
+#define BEKEN_USING_IIC 1
 #define RT_USING_DEVICE_IPC 1
 #define RT_USING_SERIAL 1
-//#define RT_USING_I2C 1
-//#define RT_USING_I2C_BITOPS 1
+#define RT_USING_I2C 1
+#define RT_USING_I2C_BITOPS 1
 #define RT_USING_PIN 1
 #define RT_USING_RTC 1
 #define RT_USING_SOFT_RTC 1
@@ -109,6 +109,7 @@
 #define RT_USING_AUDIO 1
 #define RT_USING_SPI 1
 //#define RT_USING_I2S 1
+#define CFG_USE_I2C1
 
 /* Using USB */
 

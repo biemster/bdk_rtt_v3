@@ -78,3 +78,6 @@
 #endif
 #define PM_TEST
 #define GPIO_DEMO
+#define WEB_CAMERA_TEST
+#define I2C_SCAN
+#define WLAN_RAW
